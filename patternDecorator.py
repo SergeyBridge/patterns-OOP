@@ -36,8 +36,14 @@ class Hero:
 # AbstractNegative, Berserk, Blessing, Curse, EvilEye, Weakness
 
 class AbstractEffect():
-    """обыкновенно этот класс - абстрактный
-    Это конец рекурсии методов, реализующих паттерн ДЕКОРАТОР"""
+    """
+    обыкновенно этот класс - абстрактный
+    Это рекурсивные методы, реализующие паттерн ДЕКОРАТОР
+    Декорируется класс Hero
+    В классе Hero методы с такими же именами возвращают пустые списки,
+    тем самым завершая рекурсию
+    """
+
     def __init__(self, decorated_obj):
         self.base = decorated_obj
 
@@ -72,6 +78,11 @@ class AbstractPositive(AbstractEffect):
 
 
 class Berserk(AbstractPositive):
+    """
+    так определяется класс, декорирующий, возможно,
+    сложный класс Hero
+    содержит одну структуру данных
+    """
     _buff = {
             "HP": 50,  # health points
             "Strength": 7,  # сила
